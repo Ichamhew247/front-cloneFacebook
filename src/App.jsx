@@ -1,7 +1,11 @@
+import Router from "./route/Router";
+
 function App() {
   return (
     <>
-      <div className=" ">Nattanicha</div>
+      <div className=" ">
+        <Router />
+      </div>
     </>
   );
 }
