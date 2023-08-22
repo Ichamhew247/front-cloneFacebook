@@ -1,10 +1,27 @@
-export default function LoginInput({ placeholder }) {
+import createClasses from "../../../utils/create-classes";
+
+export default function LoginInput({
+  placeholder,
+  value,
+  onChange,
+  name,
+  isInvalid,
+}) {
+  const className = createClasses(
+    "block w-full rounded-md px-4 py-3.5 outline-none focus:ring-1",
+    isInvalid
+      ? "border-red-500 focus:ring-green-300 bg-yellow-300 "
+      : "border-gray-300 focus:border-blue-500 focus:ring-blue-300"
+  );
   return (
     <>
       <input
         type="text"
-        className="block w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-500"
+        className={className}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        name={name}
       />
     </>
   );
