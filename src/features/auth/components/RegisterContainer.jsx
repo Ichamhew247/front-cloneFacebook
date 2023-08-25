@@ -18,7 +18,7 @@ export default function RegisterContainer() {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <RegisterForm />
+        <RegisterForm onSuccess={() => setOpen(false)} />
       </Modal>
     </>
   );
