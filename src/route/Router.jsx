@@ -2,7 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import Homepage from "../pages/Homepage";
 import RedirectIfAuthenticated from "../features/auth/components/RedirectIfAuthenticated";
-import ProtectedRoute from "../features/auth/components/ProtectedRoute";
+import Header from "../layouts/header";
+// import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,10 +17,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <ProtectedRoute>
-        <Homepage />
-      </ProtectedRoute>
+      // <ProtectedRoute>
+      <Homepage />
+      // </ProtectedRoute>
     ),
+  },
+  {
+    path: "/friend",
+    element: <Header />,
   },
 ]);
 
