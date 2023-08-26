@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import Homepage from "../pages/Homepage";
 import RedirectIfAuthenticated from "../features/auth/components/RedirectIfAuthenticated";
+import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Homepage />,
+    element: (
+      <ProtectedRoute>
+        <Homepage />
+      </ProtectedRoute>
+    ),
   },
 ]);
 
