@@ -1,10 +1,11 @@
 import { useState } from "react";
 import RegisterInput from "./RegisterInput";
+import { useDispatch } from "react-redux";
+
 import validateRegister from "../validators/validate-register";
 import InputErrormessage from "./InputErrormessage";
-import * as authService from "../../../api/auth-api";
-import { setAccessToken } from "../../../utils/localstorage";
 import { toast } from "react-toastify";
+import { registerAsync } from "../slice/auth-slice";
 
 const initialInput = {
   firstName: "",
@@ -16,6 +17,8 @@ const initialInput = {
 export default function RegisterForm({ onSuccess }) {
   const [input, setInput] = useState(initialInput);
   const [error, setError] = useState({});
+
+  const dispatch = useDispatch();
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -29,11 +32,9 @@ export default function RegisterForm({ onSuccess }) {
       if (result) {
         return setError(result);
       }
-      setError({}); //หมายถึงกรอกแล้วตัวแดงหายหรอ
-
-      const res = await authService.register(input);
-      setAccessToken(res.data.accessToken);
-      toast.success("Register successfully");
+      setError({});
+      await dispatch(registerAsync(input)).unwrap();
+      toast.success("Register successfull");
       onSuccess();
     } catch (err) {
       toast.info(err.response.data.message);
@@ -52,7 +53,7 @@ export default function RegisterForm({ onSuccess }) {
               onChange={handleChangeInput}
               isInvalid={error.firstName}
             />
-            {error.firstName && <InputErrormessage message={error.firstName} />}
+            <InputErrormessage message={error.firstName} />
           </div>
           <div>
             <RegisterInput

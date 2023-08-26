@@ -1,52 +1,34 @@
 import LoginInput from "./LoginInput";
 import validateLogin from "../validators/validate-login";
 import InputErrormessage from "./InputErrormessage";
-// import { login } from "../../../api/axios";
-// import { useAuth } from "../../../../contexts/AuthContext";
-import { useState } from "react";
+import useForm from "../../../hooks/useForm";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { login } from "../slice/auth-slice";
 
-const initialInput = {
-  emailOrMobile: "",
-  password: "",
-};
+//ท่าใหม่ เอาท่า LoginForm ให้เข้าใจก่อน
 
 export default function LoginForm() {
-  // const { setUser } = useAuth();
-  const [input, setInput] = useState(initialInput);
-  const [error, setError] = useState({
-    emailOrMobile: "",
-    password: "",
-  }); // แก้ไขให้ตรงกับ input ที่ใช้
-
-  const handleChangeInput = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-    setError({ ...error, [e.target.name]: "" });
-  };
-
-  const handleSubmitForm = async (e) => {
-    e.preventDefault();
-    const result = validateLogin(input);
-    console.dir(result);
-    if (result) {
-      return setError(result);
+  const { input, handleChangeInput, error, handleSubmitForm } = useForm(
+    {
+      emailOrMobile: "",
+      password: "",
+    },
+    validateLogin
+  );
+  const dispatch = useDispatch();
+  const onSubmit = async (data) => {
+    try {
+      await dispatch(login(data)).unwrap();
+      toast.success("สำเร็จ");
+    } catch (err) {
+      toast.error("Invalid email address or mobile number or password");
     }
-
-    // try {
-    //   const response = await login(input);
-    //   console.log(response.data.token);
-    //   localStorage.setItem("token", response.data.token);
-    //   let token = localStorage.getItem("token");
-    //   const meResponse = await getMe(token);
-    //   setUser(meResponse.data);
-    //   console.log(meResponse.data);
-    // } catch (error) {
-    //   console.error("An error occurred:", error);
-    // }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmitForm}>
+      <form onSubmit={handleSubmitForm(onSubmit)}>
         <div className="grid gap-4">
           <div>
             <LoginInput
@@ -56,6 +38,7 @@ export default function LoginForm() {
               onChange={handleChangeInput}
               isInvalid={error.emailOrMobile}
             />
+
             {error.emailOrMobile && (
               <InputErrormessage message={error.emailOrMobile} />
             )}
