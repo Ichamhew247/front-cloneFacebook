@@ -1,0 +1,77 @@
+[33mcommit f071ea6539a04fd08be9a0b1de8afb6ac21f697d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Thu Aug 31 02:58:28 2023 +0700
+
+    Profile UI
+
+[33mcommit 5b2521b0893338c77e7a9371ab373c0a1b1f6ebf[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Thu Aug 31 01:55:40 2023 +0700
+
+    fetch me, authentication
+
+[33mcommit fc1c42c1d0ee078a06356c4f6b195e0b0318ea69[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Mon Aug 28 15:28:24 2023 +0700
+
+    Drop down Done
+
+[33mcommit 938aa7392c2abf0d8113480240eb20c4e6269b5e[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Sun Aug 27 02:37:15 2023 +0700
+
+    destructure navbar
+
+[33mcommit bffda9236a04f6c9579b6a138e79c9ee7fb1c18f[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Sun Aug 27 00:53:44 2023 +0700
+
+    authenticated homepage page
+
+[33mcommit 0666a068460b1661097c4d598cb2365a5f4b84f0[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Sat Aug 26 23:18:13 2023 +0700
+
+    login system completed
+
+[33mcommit 73f16b2bc434d562422af556ab8bf6cebf07c8cd[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Fri Aug 25 16:40:55 2023 +0700
+
+    register completed
+
+[33mcommit 52d5b310edeb7ecff0f47bbbfbdb800a3280bc69[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Tue Aug 22 13:59:58 2023 +0700
+
+    login & register validation completed
+
+[33mcommit 37e97deb87e32e919722ae027729b54d82b04f4b[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Tue Aug 15 02:06:46 2023 +0700
+
+    validate register form
+
+[33mcommit 203df5b9d3a70cfd334a4fb2334852bd7f665a0a[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Mon Aug 7 17:12:58 2023 +0700
+
+    refactoring modal
+
+[33mcommit a6dc9f293dad9d62c498f3e842f6977fc4d255a2[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Sat Aug 5 01:26:37 2023 +0700
+
+    create modal
+
+[33mcommit b957ed07af03a3a9fbcad1c96eee160f8fec85a8[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Tue Jul 25 19:29:11 2023 +0700
+
+    set up project
+
+[33mcommit db0ef91654b331766ce31c94fe0bf1c0914b5825[m
+Author: Ichamhew247 <nattanicha027@gmail.com>
+Date:   Tue Jul 25 17:52:24 2023 +0700
+
+    init project
