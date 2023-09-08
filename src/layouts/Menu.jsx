@@ -8,7 +8,7 @@ const menus = [
 ];
 
 export default function Menu() {
-  const location = useLocation(); // ได้ object location แบบนี้ {pathname: "/friend"}
+  const location = useLocation(); //ได้ object location แบบนี้ {pathname: "/friend"}
   return (
     <>
       <nav className="flex justify-center items-center gap-2">

@@ -55,6 +55,15 @@ export const logout = createAsyncThunk("auth/logout", async () => {
 const authSlice = createSlice({
   name: "auth",
   initialState: initialState,
+  reducers: {
+    //ส่วนนี้ทำให้ ภาพในuiเปลี่ยนอัตโนมัติหลังอัพโหลดภาพ ตอนดิสแพชจะส่งค่าเพโหลดเป็นลิ้งของรูปภาพที่ได้มาจากApi
+    updateProfileImage: (state, action) => {
+      state.user.profileImage = action.payload;
+    },
+    updateCoverImage: (state, action) => {
+      state.user.coverImage = action.payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(registerAsync.pending, (state) => {
@@ -96,6 +105,7 @@ const authSlice = createSlice({
 
 export default authSlice.reducer;
 
+export const { updateProfileImage, updateCoverImage } = authSlice.actions;
 //ห้ามลบ ข้างล่างคือ หลักการทำงานเบื้องหลัง
 //action object {type:"register"}
 //action creator

@@ -1,31 +1,74 @@
 import Avatar from "../../../../components/Avatar";
 import PictureForm from "./PictureForm";
-
+import * as userService from "../../../../api/user-api";
+import { useState } from "react";
+import Loading from "../../../../components/Loading";
+import { useDispatch, useSelector } from "react-redux";
+import CoverImage from "./CoverImage";
+import {
+  updateProfileImage as updateAction,
+  updateCoverImage,
+} from "../../slice/auth-slice";
 export default function EditProfileForm() {
+  //No redux this time
+  const [isloading, setIsLoading] = useState(false);
+
+  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
+
+  //ใส่ try catch ใส่ toast เองเลยจ้า
+  const updateProfileImage = async (input) => {
+    const formData = new FormData();
+    //use this แทน Plain object javascript เพื่อใช้  Multipath from data
+    //formData เหมือน request body application/json
+    //เพิ่ม key value ต้องใช้ append
+    formData.append("profileImage", input); // {profileImage: input}
+    setIsLoading(true);
+    const res = await userService.updateUserImage(formData);
+    setIsLoading(false);
+    dispatch(updateAction(res.data.profileImage));
+  };
+  const updateCover = async (input) => {
+    const formData = new FormData();
+    formData.append("coverImage", input);
+    setIsLoading(true);
+    const res = await userService.updateUserImage(formData);
+    setIsLoading(false);
+    dispatch(updateCoverImage(res.data.coverImage));
+  };
+
   return (
-    <div className="flex flex-col gap-4">
-      <PictureForm
-        // onSave ={() => {saveProfile}}
-        title="Profile Image"
-        initialSrc="https://scontent.fbkk7-2.fna.fbcdn.net/v/t39.30808-6/370283335_275785685232645_8394501133976503873_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5614bc&_nc_ohc=qmRvBZERNoMAX_S8Z_e&_nc_ht=scontent.fbkk7-2.fna&oh=00_AfCeu8YcXj69P9QUlS1G0h1U1wJQCkWuS3HO6_ueCrJVCA&oe=64F8013C"
-      >
-        {(src) => (
-          <div className="flex justify-center">
-            <Avatar src={src} alt="user" className="h-[10.5rem] w-[10.5rem]" />
-          </div>
-        )}
-      </PictureForm>
-      <PictureForm
-        // onSave ={() => {saveCover}}
-        title="Cover Image"
-        initialSrc="https://images.unsplash.com/photo-1589497836818-9ad2fa1df1a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwxMzYwOTV8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
-      >
-        {(src) => (
-          <div className="aspect-[1096/404] overflow-hidden flex justify-center items-center rounded-lg">
-            <img alt="cover" src={src} />
-          </div>
-        )}
-      </PictureForm>
-    </div>
+    <>
+      {isloading && <Loading />}
+      <div className="flex flex-col gap-4">
+        <PictureForm
+          onSave={updateProfileImage}
+          title="Profile Image"
+          initialSrc={user.profileImage}
+        >
+          {(src) => (
+            <div className="flex justify-center">
+              <Avatar
+                src={src}
+                alt="user"
+                className="h-[10.5rem] w-[10.5rem]"
+              />
+            </div>
+          )}
+        </PictureForm>
+
+        <PictureForm
+          onSave={updateCover}
+          title="Cover Image"
+          initialSrc={user.coverImage}
+        >
+          {(src) => (
+            <div className="aspect-[1096/404] overflow-hidden flex justify-center items-center rounded-lg">
+              <CoverImage src={src} />
+            </div>
+          )}
+        </PictureForm>
+      </div>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import Avatar from "../../../../components/Avatar";
 import Modal from "../../../../components/Modal";
 import { useState } from "react";
 import EditProfileForm from "./EditProfileForm";
+
 export default function ProfileContainer() {
   const [open, setOpen] = useState(false);
   return (
@@ -17,7 +18,7 @@ export default function ProfileContainer() {
       <div className="max-w-[66.5rem] flex mx-auto items-end gap-4 px-4">
         <div className="-mt-8 z-0">
           <Avatar
-            src="https://scontent.fbkk7-3.fna.fbcdn.net/v/t39.30808-6/371436818_6432461173508792_8864430528494609243_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=Dv26jXu9U8cAX_g4XRq&_nc_ht=scontent.fbkk7-3.fna&oh=00_AfBJdpUrz7UxT-KglZrNEb8elFAJs2QcGaWQt13a0cxmVg&oe=64F3CAAF"
+            // src="https://scontent.fbkk7-3.fna.fbcdn.net/v/t39.30808-6/371436818_6432461173508792_8864430528494609243_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=Dv26jXu9U8cAX_g4XRq&_nc_ht=scontent.fbkk7-3.fna&oh=00_AfBJdpUrz7UxT-KglZrNEb8elFAJs2QcGaWQt13a0cxmVg&oe=64F3CAAF"
             className="h-[10.5rem] w-[10.5rem] ring ring-white"
           />
         </div>
